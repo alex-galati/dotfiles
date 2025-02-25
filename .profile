@@ -58,4 +58,5 @@ mesg n
 alias cd..="cd .."
 alias l="ls -alF"
 alias potofgreed="echo \"I summon Pot of Greed to draw three additional cards from my deck!\""
-alias shepherdquotes="echo \"Violence is fun, murder is wrong.\""
+alias shepherdquotes="echo \"Violence is fun, murder is wrong.\" 
+\"Did anybody have me saying the phrase 'little potato balls' on their bingo cards?\""
