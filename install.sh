@@ -9,7 +9,7 @@
 #     cd .dotfiles
 #     ./install.sh link
 
-files=(.vimrc .inputrc)
+files=(.vimrc .profile)
 
 if [[ -n "$1" && "$1" == "link" ]]; then
     # Method 2: Git and link
