@@ -1,11 +1,25 @@
 #!/bin/bash
-if [[ -z "$1" ]]; then
-    wget https://raw.githubusercontent.com/alex-galati/dotfiles/refs/heads/master/.profile
-    wget https://raw.githubusercontent.com/alex-galati/dotfiles/refs/heads/master/.vimrc
-elif [[ -n "$1" && "$1" == "link" ]]; then
-    rm -f ~/.vimrc
-    ln -s ~/.dotfiles/.vimrc ~/.vimrc
 
-    rm -f ~/.profile
-    ln -s ~/.dotfiles/.profile ~/.profile
+# This script can be invoked one of two ways.
+# Either
+#     curl https://raw.githubusercontent.com/jbshep/devopsdotfiles/refs/heads/main/install.sh | bash
+# Or
+#     cd ~
+#     git clone https://github.com/jbshep/devopsdotfiles .dotfiles
+#     cd .dotfiles
+#     ./install.sh link
+
+files=(.vimrc .inputrc)
+
+if [[ -n "$1" && "$1" == "link" ]]; then
+    # Method 2: Git and link
+    for f in ${files[@]}; do 
+        rm -f $HOME/$f
+        ln -s $PWD/$f $HOME/$f
+    done
+else
+    # Method 1: No git
+    for f in ${files[@]}; do 
+        wget https://raw.githubusercontent.com/jbshep/devopsdotfiles/refs/heads/main/$f
+    done
 fi
